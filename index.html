@@ -31,7 +31,7 @@
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
             <a href="index.html" class="navbar-brand px-lg-4 m-0">
-                <h1 class="m-0 display-4 text-uppercase text-white">Karla de Roma</h1>
+                <h1 class="m-0 display-4 text-uppercase text-white">Aromas de Roma</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -115,7 +115,6 @@
         </div>
     </div>
     <!-- fin de oferta  -->
-
 <!-- inicio de la reservacion --> 
 <div class="container-fluid my-5">
     <div class="container">
@@ -167,15 +166,14 @@
                             </div>
                         </form>
                         <div id="confirmationMessage" class="text-white mt-3" style="display: none;">¡Reserva realizada con éxito!</div>
-                        <div id="errorMessage" class="text-danger mt-3" style="display: none;">Horario no disponible. Por favor, elige otro horario.</div>
+                        <div id="errorMessageWeekdays" class="text-danger mt-3" style="display: none;">La hora seleccionada no está disponible para los días de semana (Lunes - Viernes). Selecciona una hora entre las 7:00 AM y las 9:00 PM o entre 1:00 PM y 9:00 PM.</div>
+                        <div id="errorMessageWeekends" class="text-danger mt-3" style="display: none;">La hora seleccionada no está disponible para los fines de semana (Sábado - Domingo). Selecciona una hora entre la 1:00 PM y las 9:00 PM.</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
+</div> 
 
     <!-- Testimonial Start -->
     <div class="container-fluid py-5">
@@ -305,7 +303,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script src="mesas.js"></script>
+    <script src="js/mesas.js"></script>
 </body>
 
 </html>

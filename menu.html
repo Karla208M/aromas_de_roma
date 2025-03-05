@@ -24,6 +24,7 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/menu.css">
 </head>
 
 <body>
@@ -138,44 +139,35 @@
         </div>
     </div>
     
-    <!-- Modal -->
-    <div class="modal fade" id="orderModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Hacer Pedido</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Producto</label>
-                            <input type="text" class="form-control" id="productName" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Precio</label>
-                            <input type="text" class="form-control" id="productPrice" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Cantidad</label>
-                            <input type="number" class="form-control" id="quantity" min="1" value="1">
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100" >Confirmar Pedido</button>
-                    </form>
-                </div>
+   <!-- Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hacer Pedido</h5>
+                <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Cerrar">✖</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Producto</label>
+                        <input type="text" class="form-control" id="productName" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Precio</label>
+                        <input type="text" class="form-control" id="productPrice" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Cantidad</label>
+                        <input type="number" class="form-control" id="quantity" min="1" value="1">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Confirmar Pedido</button>
+                </form>
             </div>
         </div>
     </div>
-    <script>
-        //modal de orden
-document.querySelectorAll('.product-img').forEach(img => {
-    img.addEventListener('click', function() {
-        document.getElementById('productName').value = this.dataset.name;
-        document.getElementById('productPrice').value = this.dataset.price;
-        new bootstrap.Modal(document.getElementById('orderModal')).show();
-    });
-});
-    </script>
+</div>
+  
     
     <!-- fin de la orden -->
 
@@ -254,7 +246,8 @@ document.querySelectorAll('.product-img').forEach(img => {
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script src="js/modal.js"></script>
+    <script src="js/menuorden.js"></script>
+    
 </body>
 
 </html>
