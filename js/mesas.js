@@ -1,81 +1,80 @@
-function validarHora(selectedTime, selectedDate) {
-    const timePattern = /^([01]?\d|2[0-3]):([0-5]\d)\s?(AM|PM)?$/i;
-    if (!timePattern.test(selectedTime)) {
-        return false;
-    }
-
-    const timeParts = selectedTime.match(timePattern);
-    let hours = parseInt(timeParts[1]);
-    const minutes = parseInt(timeParts[2]);
-    const period = timeParts[3] ? timeParts[3].toUpperCase() : "";
-
-    // Convertir a formato de 24 horas si está en AM/PM
-    if (period === "AM" && hours !== 12) {
-        hours += 12;
-    } else if (period === "PM" && hours === 12) {
-        hours = 0;
-    }
-
-    if (!selectedDate) {
-        return false;
-    }
-
-    const dateParts = selectedDate.split("-");
-    if (dateParts.length !== 3) {
-        return false;
-    }
-    
-    const date = new Date(selectedDate);
-    if (isNaN(date.getTime())) {
-        return false;
-    }
-    
-    const dayOfWeek = date.getDay(); // 0 (Domingo) - 6 (Sábado)
-
-    if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Lunes a Viernes
-        return hours >= 7 && hours < 21;
-    } else { // Sábado y Domingo
-        return hours >= 13 && hours < 21;
-    }
-}
-
 document.addEventListener("DOMContentLoaded", function () {
-    const timeInput = document.getElementById("reservationTime");
-    const dateInput = document.getElementById("reservationDate");
-    const timeError = document.createElement("div");
-    timeError.id = "timeError";
-    timeError.style.color = "red";
-    timeInput.parentNode.appendChild(timeError);
+    let dateInput = document.getElementById("reservationDate");
+    let timeInput = document.getElementById("reservationTime");
+    let peopleSelect = document.querySelector("select.custom-select");
+    let form = document.getElementById("reservationForm");
 
-    function validateFields() {
-        let valid = true;
-        timeError.textContent = "";
+    let errorMessageWeekdays = document.getElementById("errorMessageWeekdays");
+    let errorMessageWeekends = document.getElementById("errorMessageWeekends");
 
-        if (!dateInput.value) {
-            valid = false;
-            dateInput.style.border = "2px solid red";
-        } else {
-            dateInput.style.border = "";
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Evita que el formulario se envíe automáticamente
+
+        let dateValue = dateInput.value;
+        let timeValue = timeInput.value;
+        let peopleValue = peopleSelect.value;
+
+        // Ocultar mensajes previos
+        errorMessageWeekdays.style.display = "none";
+        errorMessageWeekends.style.display = "none";
+
+        // Validar que los campos no estén vacíos
+        if (!dateValue || !timeValue || !peopleValue) {
+            alert("Por favor, completa todos los campos.");
+            return;
         }
 
-        if (timeInput.value && dateInput.value && !validarHora(timeInput.value, dateInput.value)) {
-            timeError.textContent = "Horario no disponible. Lunes-Viernes: 7AM-9PM | Sábado-Domingo: 1PM-9PM.";
-            valid = false;
+        // Validar fecha
+        let selectedDate = new Date(dateValue);
+        let today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        if (selectedDate < today) {
+            alert("No puedes seleccionar una fecha pasada.");
+            return;
         }
 
-        return valid;
-    }
+        // Validar hora y día de la semana
+        let dayOfWeek = selectedDate.getDay(); // 0 = Domingo, 6 = Sábado
+        let timeParts = timeValue.split(":");
 
-    timeInput.addEventListener("change", validateFields);
-    dateInput.addEventListener("change", validateFields);
+        if (timeParts.length !== 2) {
+            alert("Por favor, ingresa una hora válida en formato HH:MM.");
+            return;
+        }
 
-    document.getElementById("reservationForm").addEventListener("submit", function (event) {
-        if (!validateFields()) {
-            event.preventDefault();
-            document.getElementById("errorMessage").style.display = "block";
-        } else {
-            document.getElementById("errorMessage").style.display = "none";
-            document.getElementById("confirmationMessage").style.display = "block";
+        let selectedHour = parseInt(timeParts[0], 10);
+        let selectedMinutes = parseInt(timeParts[1], 10);
+        let selectedTimeInMinutes = selectedHour * 60 + selectedMinutes; // Convertir la hora a minutos
+
+        let isValidTime = false;
+
+        // Validación de Lunes a Viernes (7:00 AM - 9:00 PM)
+        if (dayOfWeek >= 1 && dayOfWeek <= 5) { // Lunes - Viernes
+            let openingTime = 7 * 60;  // 7:00 AM en minutos
+            let closingTime = 21 * 60; // 9:00 PM en minutos
+
+            if (selectedTimeInMinutes >= openingTime && selectedTimeInMinutes <= closingTime) {
+                isValidTime = true;
+            } else {
+                errorMessageWeekdays.style.display = "block"; // Mostrar error para días de semana
+                return;
+            }
+        } else if (dayOfWeek === 0 || dayOfWeek === 6) { // Sábado - Domingo
+            let openingTime = 13 * 60; // 1:00 PM en minutos
+            let closingTime = 21 * 60;  // 9:00 PM en minutos
+
+            if (selectedTimeInMinutes >= openingTime && selectedTimeInMinutes <= closingTime) {
+                isValidTime = true;
+            } else {
+                errorMessageWeekends.style.display = "block"; // Mostrar error para fines de semana
+                return;
+            }
+        }
+
+        // Si la hora es válida, se envía la reserva (puedes procesar aquí la reserva como desees)
+        if (isValidTime) {
+            alert("¡Reserva realizada con éxito!");
         }
     });
 });
