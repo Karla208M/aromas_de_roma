@@ -1,115 +1,99 @@
-/* Estilos del formulario emergente */
-  /* Botón flotante */
-  .pedido-btn {
-    z-index: 10;
-   position: fixed;
-   bottom: 20px;
-   right: 20px;
-   background-color: rgb(141, 79, 12);
-   color: rgb(29, 1, 1);
-   border: none;
-   border-radius: 50%;
-   width: 60px;
-   height: 60px;
-   font-size: 28px;
-   cursor: pointer;
-   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
 
-/* Estilos del formulario emergente */
-.modal {
-   display: none;
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   background: rgba(0, 0, 0, 0.5);
-   justify-content: center;
-   align-items: center;
-}
-
-.modal-content {
-   background: white;
-   padding: 20px;
-   border-radius: 20px;
-   width: 90%;
-   max-width: 550px;
-   text-align: left;
-   position: fixed;
-}
-
-.close-btn {
-   position: absolute;
-   top: 20px;
-   right: 10px;
-   background: rgb(141, 79, 12);
-   color: rgb(31, 28, 28);
-   border: none;
-   width: 25px;
-   height: 25px;
-   border-radius: 50%;
-   cursor: pointer;
-}
-
-input, select, textarea {
-   width: 100%;
-   padding: 4px;
-   margin: 5px 0;
-   border: 1px solid #ccc;
-   border-radius: 5px;
-}
-
-button {
-   background: rgb(141, 79, 12);
-   color: white;
-   padding: 10px;
-   border: none;
-   cursor: pointer;
-   border-radius: 5px;
-   width: 100%;
-}
-    .error {
-        color: red;
-        font-size: 0.9em;
-    }
-
-/* Contenedor principal del modal */
-.modal {
-    display: none; /* Oculto por defecto */
+/* Estilos del botón flotante */
+.pedido-btn {
+    z-index: 10; /* Asegura que el botón esté sobre otros elementos */
     position: fixed;
-    z-index: 1000;
-    left: 0;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgb(141, 79, 12);
+    color: rgb(29, 1, 1);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+/* Estilos del modal */
+/* Estilo inicial del modal para que no se muestre al cargar la página */
+.modal {
+    display: none; /* Asegura que el modal esté oculto inicialmente */
+    position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+ }
+
+
+/* Contenido del modal */
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 90%; /* El modal ocupa el 90% del ancho de la pantalla */
+    max-width: 550px; /* El modal tiene un ancho máximo */
+    max-height: 85vh; /* Limita la altura del modal */
+    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+    text-align: left;
+    position: relative; /* Necesario para posicionar el botón de cierre */
+}
+
+/* Estilo del botón de cerrar */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    background: rgb(141, 79, 12);
+    color: rgb(31, 28, 28);
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Evita que el fondo se desplace */
 }
 
-/* Contenido del modal con barra de desplazamiento si es necesario */
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 50%;
-    max-width: 600px;
-    max-height: 80vh; /* Limita la altura del modal */
-    overflow-y: auto; /* Permite la barra de desplazamiento vertical si es necesario */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
+/* Estilos de los campos de formulario */
+input, select, textarea {
+    width: 100%;
+    padding: 10px; /* Mejora la accesibilidad y legibilidad */
+    margin: 10px 0; /* Aumenta el espacio entre los campos */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
 }
 
-/* Botón para cerrar el modal */
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
+/* Estilos del botón de enviar */
+button {
+    background: rgb(141, 79, 12);
+    color: white;
+    padding: 10px;
     border: none;
-    font-size: 20px;
     cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px; /* Aumenta la legibilidad */
+}
+
+/* Estilo para los mensajes de error */
+.error {
+    color: red;
+    font-size: 0.9em;
+}
+
+/* Mejorando la accesibilidad y la apariencia */
+button:hover {
+    background-color: rgb(118, 66, 10); /* Fondo ligeramente más oscuro al pasar el mouse */
+}
+
+.close-btn:hover {
+    background-color: rgb(118, 66, 10); /* Fondo ligeramente más oscuro al pasar el mouse */
 }

@@ -72,7 +72,6 @@
     <!-- Page Header End -->
 
 
-    <!-- Menu y orden -->
     <div class="container pt-5">
         <h1 class="text-center">Menú y Precios</h1>
         <div class="row">
@@ -80,29 +79,32 @@
                 <h2>Café Caliente</h2>
                 <div class="row align-items-center mb-4">
                     <div class="col-4">
-                        <img class="w-100 rounded-circle product-img" src="img/menu-1.jpeg" alt="Espresso" data-name="Espresso" data-price="$5">
+                        <img class="w-100 rounded-circle product-img" src="img/menu-1.jpeg" alt="Espresso" data-name="Espresso" data-price="5">
                     </div>
                     <div class="col-8">
                         <h4>Espresso</h4>
                         <p>El clásico italiano, un café corto y fuerte con una capa de crema natural.</p>
+                        <p>Precio: $5.00</p>
                     </div>
                 </div>
                 <div class="row align-items-center mb-4">
                     <div class="col-4">
-                        <img class="w-100 rounded-circle product-img" src="img/menu-2.jpg" alt="Cappuccino" data-name="Cappuccino" data-price="$7">
+                        <img class="w-100 rounded-circle product-img" src="img/menu-2.jpg" alt="Cappuccino" data-name="Cappuccino" data-price="7">
                     </div>
                     <div class="col-8">
                         <h4>Cappuccino</h4>
                         <p>Espresso con leche vaporizada y espuma, ideal para las mañanas.</p>
+                        <p>Precio: $7.00</p>
                     </div>
                 </div>
                 <div class="row align-items-center mb-4">
                     <div class="col-4">
-                        <img class="w-100 rounded-circle product-img" src="img/menu-3.jpeg" alt="Caffè Latte" data-name="Caffè Latte" data-price="$9">
+                        <img class="w-100 rounded-circle product-img" src="img/menu-3.jpeg" alt="Caffè Latte" data-name="Caffè Latte" data-price="9">
                     </div>
                     <div class="col-8">
                         <h4>Caffè Latte</h4>
                         <p>Similar al cappuccino pero con más leche y menos espuma, un café más suave.</p>
+                        <p>Precio: $9.00</p>
                     </div>
                 </div>
             </div>
@@ -110,63 +112,70 @@
                 <h2>Café Frío</h2>
                 <div class="row align-items-center mb-4">
                     <div class="col-4">
-                        <img class="w-100 rounded-circle product-img" src="img/menu-4.jpeg" alt="Caffè Freddo" data-name="Caffè Freddo" data-price="$5">
+                        <img class="w-100 rounded-circle product-img" src="img/menu-4.jpeg" alt="Caffè Freddo" data-name="Caffè Freddo" data-price="5">
                     </div>
                     <div class="col-8">
                         <h4>Caffè Freddo</h4>
                         <p>Espresso enfriado y endulzado, servido frío, refrescante en veranos.</p>
+                        <p>Precio: $5.00</p>
                     </div>
                 </div>
                 <div class="row align-items-center mb-4">
                     <div class="col-4">
-                        <img class="w-100 rounded-circle product-img" src="img/menu-5.jpeg" alt="Shakerato" data-name="Shakerato" data-price="$7">
+                        <img class="w-100 rounded-circle product-img" src="img/menu-5.jpeg" alt="Shakerato" data-name="Shakerato" data-price="7">
                     </div>
                     <div class="col-8">
                         <h4>Shakerato</h4>
                         <p>Espresso mezclado con hielo y agitado hasta obtener una textura espumosa.</p>
+                        <p>Precio: $7.00</p>
                     </div>
                 </div>
                 <div class="row align-items-center mb-4">
                     <div class="col-4">
-                        <img class="w-100 rounded-circle product-img" src="img/menu-6.jpeg" alt="Affogato" data-name="Affogato" data-price="$9">
+                        <img class="w-100 rounded-circle product-img" src="img/menu-6.jpeg" alt="Affogato" data-name="Affogato" data-price="9">
                     </div>
                     <div class="col-8">
                         <h4>Affogato</h4>
                         <p>Un postre y café en uno: espresso caliente vertido sobre helado de vainilla.</p>
+                        <p>Precio: $9.00</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-   <!-- Modal -->
-<div class="modal fade" id="orderModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Hacer Pedido</h5>
-                <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Cerrar">✖</button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label">Producto</label>
-                        <input type="text" class="form-control" id="productName" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Precio</label>
-                        <input type="text" class="form-control" id="productPrice" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Cantidad</label>
-                        <input type="number" class="form-control" id="quantity" min="1" value="1">
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Confirmar Pedido</button>
-                </form>
+    <!-- Modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hacer Pedido</h5>
+                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Cerrar">✖</button>
+                </div>
+                <div class="modal-body">
+                    <form id="orderForm">
+                        <div class="mb-3">
+                            <label class="form-label">Producto</label>
+                            <input type="text" class="form-control" id="productName" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Precio</label>
+                            <input type="text" class="form-control" id="productPrice" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="cantidad">Cantidad:</label>
+                            <input type="number" name="cantidad" id="cantidad" min="1" value="1" required onchange="actualizarTotal()">
+                        </div>
+                        <div id="totalContainer">
+                            <h3>Total: $<span id="totalCuenta">0.00</span></h3>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Confirmar Pedido</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    
   
     
     <!-- fin de la orden -->
